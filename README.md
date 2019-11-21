@@ -26,12 +26,13 @@
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|email|string|null: false|
-|password|string|null: false|
-|name|string|null: false|
+|text|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|messages_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :group
+- belongs_to :tweet
 - belongs_to :user
+
 
 ## groups_usersテーブル
 |Column|Type|Options|
