@@ -1,0 +1,24 @@
+.chat-main 
+  .chat-main_header
+    .chat-main_header__left-box
+      %h2.chat-main_header__left-box__current-group 新しいグループ
+      %ul.chat-main_header__left-box__member-list 
+        Member： 
+        %li.main-header__left-box__member-list__member 
+          メンバーを記入
+    .chat-main_header__edit-btn EDIT
+  .chat-main_messages
+    .chat-main_message
+      .chat-main_message__upper-info
+        %p.chat-main_message__upper-info__talker NAME
+        %p.chat-main_message__upper-info__date 2019/11/25(sat) 16:07:01
+      %p.chat-main_message__text テストメッセージ
+  .form
+    %form.new_message
+      .input-box
+        %input.input-box__text{type: "text", :placeholder => " type a message"} 
+        %label.input-box__image
+          = icon('fas', 'image')
+          %input.input-box__image__file{type: "file"}
+      %input.submit-btn{type: "submit", value: "Send"}
+
