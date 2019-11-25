@@ -1,0 +1,55 @@
+.chat-side {
+  width: 300px;
+  // height: 100vh;
+  // background-color: #2f3e51;
+  color: #ffffff;
+  float: left;
+}
+
+.side-header {
+  background-color: #253141;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+    &_box {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-weight: bold;
+      &_menu {
+        display: flex;
+        &_new-group {
+          margin-left: 0.3rem;
+        }
+        &_edit-user {
+          margin-left: 0.3rem;
+        }
+      }
+    }
+}
+
+.fa {
+  color: white;
+}
+
+
+
+
+.groups {
+    height: calc(100vh - 100px);
+    background-color: #2f3e51;
+    padding: 20px 20px 0;
+    overflow: scroll;
+}
+
+.group {
+    margin-bottom: 40px;
+    &_group-name {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    &_last-messag {
+      font-size: 11px;
+    }
+}
