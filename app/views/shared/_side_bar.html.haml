@@ -5,7 +5,7 @@
         = current_user.name
       %ul.side-header_box_menu
         %li.side-header_box_menu_new-group
-          = link_to "https://www.facebook.com/", class: "contents__btn" do
+          = link_to new_group_path do
             %i.fa.fa-edit
         %li.side-header_box_menu_edit-user
           = link_to edit_user_path(current_user) do
@@ -13,7 +13,12 @@
 
      
   .groups
-    .group
-      %p.group_group-name グループ
-      %p.group_last-messag まだメッセージはありません。
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group) do
+          %p.group_group-name
+            = group.name
+          %p.group_last-messag
+            メッセージはまだありません。
+   
 
