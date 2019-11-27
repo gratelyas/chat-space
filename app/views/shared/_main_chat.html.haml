@@ -7,18 +7,64 @@
         %li.main-header__left-box__member-list__member 
           メンバーを記入
     .chat-main_header__edit-btn EDIT
-  .chat-main_messages
-    .chat-main_message
-      .chat-main_message__upper-info
-        %p.chat-main_message__upper-info__talker NAME
-        %p.chat-main_message__upper-info__date 2019/11/25(sat) 16:07:01
-      %p.chat-main_message__text テストメッセージ
-  .form
-    %form.new_message
-      .input-box
-        %input.input-box__text{type: "text", placeholder: " type a message"} 
-        %label.input-box__image
-          = icon('fas', 'image')
-          %input.input-box__image__file{type: "file"}
-      %input.submit-btn{type: "submit", value: "Send"}
 
+
+
+  .messages
+    = render @messages
+
+  -# .chat-main_messages
+  -#   .chat-main_message
+  -#     .chat-main_message__upper-info
+  -#       %p.chat-main_message__upper-info__talker aaa
+  -#       %p.chat-main_message__upper-info__date 2019/11/25(sat) 16:07:01
+  -#     %p.chat-main_message__text テストメッセージ
+
+
+  -# .chat-main_messages
+  -#   .chat-main_message
+  -#     .chat-main_message__upper-info
+  -#       %p.chat-main_message__upper-info__talker
+  -#       %p.chat-main_message__upper-info__date 2019/11/25(sat) 16:07:01
+  -#     %p.chat-main_message__text テストメッセージ
+
+
+
+
+
+  -# .chat-main_message
+  -# .chat-main_message__upper-info
+  -#   %p.chat-main_message__upper-info__talker
+  -#     = message.user.name
+  -#   %p.chat-main_message__upper-info__date
+  -#     = message.created_at.strftime("%Y/%m/%d %H:%M")
+  -# %p.chat-main_message__text
+  -#   - if message.content.present?
+  -#     %p.chat-main_message__text
+  -#       = message.content
+  -#   = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+
+
+
+
+
+
+
+  -# .form
+  -#   %form.new_message
+  -#     .input-box
+  -#       %input.input-box__text{type: "text", placeholder: " type a message"} 
+  -#       %label.input-box__image
+  -#         = icon('fas', 'image')
+  -#         %input.input-box__image__file{type: "file"}
+  -#     %input.submit-btn{type: "submit", value: "Send"}
+
+
+  .form
+    = form_for [@group, @message] do |f|
+      .input-box
+        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'input-box__image__file'
+      = f.submit 'Send', class: 'submit-btn'
