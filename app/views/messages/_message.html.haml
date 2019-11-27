@@ -1,0 +1,21 @@
+.chat-main_message
+  .chat-main_message__upper-info
+    %p.chat-main_message__upper-info__talker
+      = message.user.name
+    %p.chat-main_message__upper-info__date
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
+  .lower-message
+    - if message.content.present?
+      %p.lower-message__content
+        = message.content
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+
+
+
+
+-# .chat-main_messages
+-#     .chat-main_message
+-#       .chat-main_message__upper-info
+-#         %p.chat-main_message__upper-info__talker aaa
+-#         %p.chat-main_message__upper-info__date 2019/11/25(sat) 16:07:01
+-#       %p.chat-main_message__text テストメッセージ

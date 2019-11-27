@@ -39,7 +39,7 @@
 //メッセージ部分
 
 
-.chat-main_messages {
+.messages {
   height: calc(100vh - 303px);
   padding: 46px 40px;
   background-color: #fafafa;
@@ -96,6 +96,7 @@
     padding: 0 40px 0 -10px;
     color: #434a54;
     border-style: none;
+    text-indent: 1em;
   }
   
   &__image {
