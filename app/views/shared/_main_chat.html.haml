@@ -1,12 +1,16 @@
 .chat-main 
   .chat-main_header
     .chat-main_header__left-box
-      %h2.chat-main_header__left-box__current-group 新しいグループ
+      %h2.chat-main_header__left-box__current-group 
+        = @group.name
       %ul.chat-main_header__left-box__member-list 
         Member： 
         %li.main-header__left-box__member-list__member 
-          メンバーを記入
-    .chat-main_header__edit-btn EDIT
+          - @group.users.each do |user| 
+            = user.name 
+    = link_to "EDIT", edit_group_path(@group.id), class: "chat-main_header__edit-btn"
+    
+      
 
 
 
