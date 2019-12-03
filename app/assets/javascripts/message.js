@@ -1,9 +1,30 @@
 $(function(){ 
+  var reloadMessages = function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+    last_message_id = $('.chat-main_message:last').data("message_id");
+    $.ajax({
+      url: 'api/messages#index {:format=>"json"}', 
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      });
+      $('.messages').append(insertHTML);
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');   
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  }
+  };
   function buildHTML(message){
     var image = (message.image)? `<img src=${message.image}>`: '';
     var html =
-      `<div class="message" data-message-id=${message.id}>
-        <div class="chat-main_message">
+      ` <div class="chat-main_message" data-message_id=${message.id}>
           <div class="chat-main_message__upper-info">
             <div class="chat-main_message__upper-info__talker">
               ${message.user_name}
@@ -44,6 +65,5 @@ $('.new_message').on('submit', function(e){
   });
     return false;
   });
+  setInterval(reloadMessages, 7000);
 })
-
-
