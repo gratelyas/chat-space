@@ -35,15 +35,28 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
+#一回コメントアウト
+# group :development, :test do
+#   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+#   gem 'byebug', platform: :mri
+#   gem 'pry-rails'
+#   gem 'rspec-rails', '~> 3.5'
+#   gem 'rails-controller-testing'
+#   gem 'factory_bot_rails'
+#   gem 'faker'
+# end
+
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-  gem 'pry-rails'
-  gem 'rspec-rails', '~> 3.5'
-  gem 'rails-controller-testing'
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
+
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
